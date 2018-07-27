@@ -1,5 +1,5 @@
 
-FLAGS := -std=c++11 -Wall -I../include -I../include/WIZ/desktop
+FLAGS := -std=c++11 -Wall -I../include -I../WIZ/include -I../WIZ/include/WIZ/desktop
 
 objects := $(patsubst %.cpp,obj/%.o,$(wildcard *.cpp))
 headers := $(wildcard include/WIZ/*.h);
