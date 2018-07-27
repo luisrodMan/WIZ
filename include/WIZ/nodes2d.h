@@ -8,7 +8,7 @@
 #include <string>
 
 class Node2d {
-
+ 
 public:
 	static const int ACTIVE_STATE = 1;
 	static const int VISIBLE_STATE = 2;
@@ -20,7 +20,7 @@ public:
 	Color color = Color(1, 1, 1, 1);
 
 private:
-	Node2d *parent;
+	Node2d *parent = nullptr;
 	int zorder = 0;
 	std::vector<Node2d*> *children = nullptr;
 	Matrix transform;
