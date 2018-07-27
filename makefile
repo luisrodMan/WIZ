@@ -1,12 +1,9 @@
 
-FLAGS := -std=c++11 -Wall -I../include -I../include/WIZ/desktop
+FLAGS := -std=c++11 -Wall -I../include -Iinclude -Iinclude/WIZ/desktop
 
 objects := $(patsubst %.cpp,obj/%.o,$(wildcard *.cpp))
-<<<<<<< HEAD
-headers := $(wildcard ../include/WIZ/*.h);
-=======
+
 headers := $(wildcard include/WIZ/*.h);
->>>>>>> remotes/origin/master
 
 ../libs/libWIZ.a: $(objects)
 	ar crf $@ $(objects)

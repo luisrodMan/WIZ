@@ -41,16 +41,23 @@ bool XmlDocument::expected(int token) {
 
 
 int XmlDocument::nextToken() {
+	lastValue = currentValueString;
+	currentToken = nextTokenX;
 	if (currentValue != EOF && noConsumeNext == 0)
 		currentValue = getc(file);	
 	consumeSpace(file);
 	if (currentValue == EOF) {
-		currentToken = -1;
+		nextTokenX = -1;
 		return currentToken;
 	}
 	noConsumeNext = 0;
-	currentToken = nextTokenX;
+	
 	std::string ll = nextValue;
+	
+	if (currentToken == IDENTIFIER || currentToken == STRING)
+		currentValueString  = nextValue;
+
+
 	char c = (char) currentValue;
 
 	switch(c) {
@@ -85,8 +92,8 @@ int XmlDocument::nextToken() {
 
 	}
 
-	if (nextTokenX == IDENTIFIER || nextTokenX == STRING)
-		lastValue = ll;
+	// if (nextTokenX == IDENTIFIER || nextTokenX == STRING)
+	// 	lastValue = ll;
 
 	std::cout << "value: " <<  (char) currentValue << " token: " << nextTokenX << std::endl;
 	if (noConsumeNext == 1 || nextTokenX == STRING)
@@ -100,6 +107,7 @@ XmlElement *XmlDocument::createElement() {
 
 	if (expected(L_ARROW) && expected(IDENTIFIER)) {
 		std::string tag = lastValue;
+		std::cout << "child -> " << tag << std::endl;
 		XmlElement *element = new XmlElement(tag);
 		while (accept(IDENTIFIER)) {
 			std::string attrib = lastValue;
