@@ -92,7 +92,11 @@ void DefaultGraphicsImp::updateViewport() {
 		viewportw = (int)nwidth;
 		viewporth = screenHeight;
 		viewporty = 0;
+<<<<<<< HEAD
 		std::cout << "here2 " << std::to_string(viewporty) << " h " <<std::to_string(viewporth) << std::endl;
+=======
+		std::cout << "here2 " << std::to_string(viewporty) << " w " <<std::to_string(viewporth) << std::endl;
+>>>>>>> remotes/origin/master
 	} else {
 		float nheight = gameHeight * sx;
 		viewporty = (int) ((screenHeight - nheight) / 2);
